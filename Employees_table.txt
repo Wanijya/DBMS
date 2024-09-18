@@ -1,0 +1,74 @@
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_name VARCHAR(100),
+    email VARCHAR(100),
+    gender VARCHAR(10),
+    city VARCHAR(100),
+    emp_age INT,
+    hire_date DATE,
+    designation VARCHAR(100),
+    department VARCHAR(100),
+    salary DECIMAL(10, 2),
+    years_of_experience INT
+);
+
+INSERT INTO employees (emp_name, email, gender, city, emp_age, hire_date, designation, department, salary, years_of_experience) 
+VALUES 
+('John Doe', 'john.doe@example.com', 'male', 'New York', 30, '2020-01-15', 'Software Engineer', 'Engineering', 80000, 5),
+('Jane Smith', 'jane.smith@example.com', 'female', 'Los Angeles', 28, '2020-02-20', 'Marketing Director', 'Marketing', 75000, 6),
+('Michael Johnson', 'michael.johnson@gmail.com', 'male', 'Chicago', 35, '2019-05-10', 'Financial Analyst', 'Finance', 70000, 8),
+('Emily Brown', 'emily.brown@gmail.com', 'female', 'Houston', 32, '2018-09-03', 'Human Resources Director', 'Human Resources', 90000, 10),
+('David Wilson', 'david.wilson@example.com', 'male', 'Chicago', 40, '2017-11-25', 'Software Engineer', 'Engineering', 95000, 12),
+('Sarah Martinez', 'sarah.martinez@example.com', 'female', 'New York', 27, '2021-03-12', 'Sales Associate', 'Sales', 70000, 4),
+('James Taylor', 'james.taylor@example.com', 'male', 'Houston', 33, '2016-08-18', 'Business Analyst', 'Business Development', 88000, 9),
+('Linda Lee', 'linda.lee@example.com', 'female', 'Chicago', 29, '2020-04-29', 'Product Designer', 'Design', 82000, 7),
+('Christopher Rodriguez', 'christopher.rodriguez@gmail.com', 'male', 'Chicago', 31, '2019-02-14', 'Marketing Director', 'Marketing', 78000, 5),
+('Amanda Campbell', 'amanda.campbell@gmail.com', 'female', 'Los Angeles', 34, '2018-06-07', 'Financial Analyst', 'Finance', 72000, 8),
+('Matthew Young', 'matthew.young@example.com', 'male', 'Houston', 26, '2021-08-22', 'Software Engineer', 'Engineering', 72000, 3),
+('Jennifer Hernandez', 'jennifer.hernandez@gmail.com', 'female', 'Los Angeles', 30, '2017-12-05', 'Content Writer', 'Content', 84000, 9),
+('Daniel Nguyen', 'daniel.nguyen@example.com', 'male', 'Denver', 36, '2018-03-19', 'Product Designer', 'Design', 89000, 7),
+('Michelle Kim', 'michelle.kim@example.com', 'female', 'Chicago', 28, '2020-10-14', 'Human Resources Director', 'Human Resources', 73000, 4),
+('Joshua Turner', 'joshua.turner@example.com', 'male', 'Los Angeles', 32, '2016-05-28', 'Sales Associate', 'Sales', 91000, 10),
+('Kimberly Adams', 'kimberly.adams@example.com', 'female', 'San Diego', 29, '2019-09-01', 'Marketing Director', 'Marketing', 76000, 6),
+('Brian Scott', 'brian.scott@example.com', 'male', 'Denver', 37, '2017-07-11', 'Business Analyst', 'Business Development', 94000, 8),
+('Lisa Clark', 'lisa.clark@gmail.com', 'female', 'Denver', 31, '2021-01-04', 'Human Resources Director', 'Human Resources', 77000, 5),
+('Kevin Baker', 'kevin.baker@example.com', 'male', 'San Diego', 27, '2018-04-30', 'Software Engineer', 'Engineering', 80000, 6),
+('Melissa Hill', 'melissa.hill@example.com', 'female', 'Chicago', 33, '2017-10-17', 'Financial Analyst', 'Finance', 68000, 5),
+('Erica Ward', 'erica.ward@example.com', 'female', 'New York', 30, '2020-02-12', 'Marketing Director', 'Marketing', 78000, 7),
+('Robert Gonzalez', 'robert.gonzalez@gmail.com', 'male', 'Denver', 35, '2019-03-25', 'Sales Associate', 'Sales', 92000, 10),
+('Stephanie Baker', 'stephanie.baker@example.com', 'female', 'New York', 28, '2018-05-19', 'Sales Associate', 'Sales', 74000, 4),
+('William Perez', 'william.perez@gmail.com', 'male', 'New York', 34, '2016-06-13', 'Sales Associate', 'Sales', 90000, 8),
+('Rebecca Flores', 'rebecca.flores@gmail.com', 'female', 'Denver', 29, '2019-11-08', 'Content Writer', 'Content', 79000, 6),
+('Joseph Murphy', 'joseph.murphy@gmail.com', 'male', 'Denver', 31, '2020-03-27', 'Product Designer', 'Design', 93000, 9),
+('Christina Richardson', 'christina.richardson@example.com', 'female', 'New York', 36, '2017-08-14', 'Data Analyst', 'Data Science', 75000, 5),
+('Edward Turner', 'edward.turner@example.com', 'male', 'Denver', 27, '2021-09-09', 'Data Analyst', 'Data Science', 82000, 4),
+('Laura Morris', 'laura.morris@example.com', 'female', 'Chicago', 32, '2018-12-02', 'Product Designer', 'Design', 77000, 7),
+('Patrick Sanchez', 'patrick.sanchez@example.com', 'male', 'Chicago', 33, '2016-11-16', 'Content Writer', 'Content', 89000, 8),
+('Samantha Morgan', 'samantha.morgan@example.com', 'female', 'New York', 30, '2020-06-29', 'Data Analyst', 'Data Science', 80000, 6),
+('Justin Coleman', 'justin.coleman@gmail.com', 'male', 'Chicago', 35, '2019-01-22', 'Business Analyst', 'Business Development', 88000, 9),
+('Rachel Ward', 'rachel.ward@example.com', 'female', 'Los Angeles', 28, '2017-04-07', 'Marketing Director', 'Marketing', 76000, 4),
+('Brandon Bell', 'brandon.bell@example.com', 'male', 'Los Angeles', 36, '2018-07-03', 'Data Analyst', 'Data Science', 91000, 8),
+('Amy Cook', 'amy.cook@example.com', 'female', 'Chicago', 31, '2021-02-18', 'Product Designer', 'Design', 78000, 5),
+('Nicholas Stewart', 'nicholas.stewart@example.com', 'male', 'Chicago', 29, '2016-10-12', 'Business Analyst', 'Business Development', 93000, 9),
+('Cassandra Murphy', 'cassandra.murphy@gmail.com', 'female', 'San Diego', 34, '2019-05-06', 'Data Analyst', 'Data Science', 74000, 6),
+('Tyler Rivera', 'tyler.rivera@example.com', 'male', 'Los Angeles', 30, '2018-08-28', 'Software Engineer', 'Engineering', 90000, 7),
+('Heather Price', 'heather.price@example.com', 'female', 'Los Angeles', 27, '2020-11-15', 'Content Writer', 'Content', 79000, 4),
+('Ryan White', 'ryan.white@gmail.com', 'male', 'San Diego', 32, '2017-06-25', 'Data Analyst', 'Data Science', 92000, 8);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+For MSSQL Server
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY IDENTITY,
+    emp_name VARCHAR(100),
+    email VARCHAR(100),
+    gender VARCHAR(10),
+    city VARCHAR(100),
+    emp_age INT,
+    hire_date DATE,
+    designation VARCHAR(100),
+    department VARCHAR(100),
+    salary DECIMAL(10, 2),
+    years_of_experience INT
+);
+

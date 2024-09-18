@@ -1,0 +1,61 @@
+syntax to create database: CREATE DATABASE database_name;
+
+DATATYPE IN THE SQL:- 
+1.Numeric Datatype
+2.date and time datatype
+3.string/TEXT DATATYPE
+
+1.Numeric Datatype:-
+			Datatype				Range:
+			1. INT					-2147483648 to 214283647
+			2.TINYINT				-128 to 127 (signed) 0 to 255
+			3.SMALLINT				-32768 to 32768
+			4.MEDIUMINT				-8388608 TO 8388608 (SIGNED), 0 TO16777215
+			5.BIGINT				-9223372036854775807 to 9223372036854775807
+			
+	APROX Data:-FLOAT(M.D)					RANGE: 
+	(we can only add 24 digit after the decimal point)	-1.79 E +308 to 1.79 E +308 
+
+	DOUBLE (M.D)
+	(we can only add 53 digit after the decimal point)	Range is same as the Float
+
+	DECIMAL(M.D)
+								Range:- -10^38+1 to 10^38-1
+
+2.DATE AND TIME DATATYPE:-
+				DATATYPE			RANGE
+				1.DATE				'1000-01-01' to '9999-12-31'
+								(YYYY-MM-DD)
+				2.DATETIME			'1000-01-01 00:00:00' to '9999-12-31 23:59:59'
+									    (HH:MM:SS)
+				3.TIME				'-838-59-59' to '838-59-59'
+
+				4.YEAR				Can be stored in 2 digit to 4 digit
+
+3.String/Text Datatype:-
+				DATATYPE			RANGE
+				1.char(size)			255 Characters
+				2.varchar(size)			255 characters
+				3.TinyText(size)		255 characters
+				4.text(size)			65,535 characters
+				5.MEDIUMTEXT(size)		16777215 characters
+				6.longtext(size)		4GB to 4294967295 characters
+				7.BINARY(size)			255 characters(save data in binary form ,in byte)
+				8.varbinary(size)		255 characters(save data in binary form ,in byte)
+
+LARGE OBJECT (LOB):-
+				DATATYPE			RANGE (maximum size)
+				1.TINYLOB			255 bytes
+				2.BLOB(size)			65,535 bytes
+				3.medium BLOB
+
+
+
+Syntax to use database:- USE datatype_name;
+Syntax to create table:- CREATE TABLE table_name(
+					col1 datatype;
+					col2 datatype;
+					col3 datatype;
+					.
+					.
+					col n datatype);

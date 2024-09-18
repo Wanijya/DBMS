@@ -1,92 +1,140 @@
-CREATE TABLE employees (
-    employee_id INT AUTO_INCREMENT PRIMARY KEY,
-    emp_name VARCHAR(100),
+# Regulor Expression 
+/*
+	Reg. exp operator is used in SQL to fetch the records, to update, delete, by defining a specific pattern.
+    >> Metacharacters:-
+					1) . = Matches any single character
+                    2) ^ = Matches the beginning of the string
+                    3) $ = Matches the end of the string
+                    4) [] = Character class, Matches any character within the brackets
+                    5) [^] = Negated Character class, Matches any character which is not within the brackets.
+                    6) | (or) = Matches either the pattern defore or after the pipe. 
+			Syntax:- 
+					SELECT col_name....
+                    FROM table_name
+                    WHERE col_name REGEXP "pattern"
+*/
+
+use db2;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
     email VARCHAR(100),
-    gender VARCHAR(10),
-    city VARCHAR(100),
-    emp_age INT,
-    hire_date DATE,
-    designation VARCHAR(100),
-    department VARCHAR(100),
-    salary DECIMAL(10, 2),
-    years_of_experience INT
+    phone_number VARCHAR(20),
+    address VARCHAR(255)
 );
 
-# Insert the data in the table
-INSERT INTO employees (emp_name, email, gender, city, emp_age, hire_date, designation, department, salary, years_of_experience) 
-VALUES 
-('John Doe', 'john.doe@example.com', 'male', 'New York', 30, '2020-01-15', 'Software Engineer', 'Engineering', 80000, 5),
-('Jane Smith', 'jane.smith@example.com', 'female', 'Los Angeles', 28, '2020-02-20', 'Marketing Director', 'Marketing', 75000, 6),
-('Michael Johnson', 'michael.johnson@gmail.com', 'male', 'Chicago', 35, '2019-05-10', 'Financial Analyst', 'Finance', 70000, 8),
-('Emily Brown', 'emily.brown@gmail.com', 'female', 'Houston', 32, '2018-09-03', 'Human Resources Director', 'Human Resources', 90000, 10),
-('David Wilson', 'david.wilson@example.com', 'male', 'Chicago', 40, '2017-11-25', 'Software Engineer', 'Engineering', 95000, 12),
-('Sarah Martinez', 'sarah.martinez@example.com', 'female', 'New York', 27, '2021-03-12', 'Sales Associate', 'Sales', 70000, 4),
-('James Taylor', 'james.taylor@example.com', 'male', 'Houston', 33, '2016-08-18', 'Business Analyst', 'Business Development', 88000, 9),
-('Linda Lee', 'linda.lee@example.com', 'female', 'Chicago', 29, '2020-04-29', 'Product Designer', 'Design', 82000, 7),
-('Christopher Rodriguez', 'christopher.rodriguez@gmail.com', 'male', 'Chicago', 31, '2019-02-14', 'Marketing Director', 'Marketing', 78000, 5),
-('Amanda Campbell', 'amanda.campbell@gmail.com', 'female', 'Los Angeles', 34, '2018-06-07', 'Financial Analyst', 'Finance', 72000, 8),
-('Matthew Young', 'matthew.young@example.com', 'male', 'Houston', 26, '2021-08-22', 'Software Engineer', 'Engineering', 72000, 3),
-('Jennifer Hernandez', 'jennifer.hernandez@gmail.com', 'female', 'Los Angeles', 30, '2017-12-05', 'Content Writer', 'Content', 84000, 9),
-('Daniel Nguyen', 'daniel.nguyen@example.com', 'male', 'Denver', 36, '2018-03-19', 'Product Designer', 'Design', 89000, 7),
-('Michelle Kim', 'michelle.kim@example.com', 'female', 'Chicago', 28, '2020-10-14', 'Human Resources Director', 'Human Resources', 73000, 4),
-('Joshua Turner', 'joshua.turner@example.com', 'male', 'Los Angeles', 32, '2016-05-28', 'Sales Associate', 'Sales', 91000, 10),
-('Kimberly Adams', 'kimberly.adams@example.com', 'female', 'San Diego', 29, '2019-09-01', 'Marketing Director', 'Marketing', 76000, 6),
-('Brian Scott', 'brian.scott@example.com', 'male', 'Denver', 37, '2017-07-11', 'Business Analyst', 'Business Development', 94000, 8),
-('Lisa Clark', 'lisa.clark@gmail.com', 'female', 'Denver', 31, '2021-01-04', 'Human Resources Director', 'Human Resources', 77000, 5),
-('Kevin Baker', 'kevin.baker@example.com', 'male', 'San Diego', 27, '2018-04-30', 'Software Engineer', 'Engineering', 80000, 6),
-('Melissa Hill', 'melissa.hill@example.com', 'female', 'Chicago', 33, '2017-10-17', 'Financial Analyst', 'Finance', 68000, 5),
-('Erica Ward', 'erica.ward@example.com', 'female', 'New York', 30, '2020-02-12', 'Marketing Director', 'Marketing', 78000, 7),
-('Robert Gonzalez', 'robert.gonzalez@gmail.com', 'male', 'Denver', 35, '2019-03-25', 'Sales Associate', 'Sales', 92000, 10),
-('Stephanie Baker', 'stephanie.baker@example.com', 'female', 'New York', 28, '2018-05-19', 'Sales Associate', 'Sales', 74000, 4),
-('William Perez', 'william.perez@gmail.com', 'male', 'New York', 34, '2016-06-13', 'Sales Associate', 'Sales', 90000, 8),
-('Rebecca Flores', 'rebecca.flores@gmail.com', 'female', 'Denver', 29, '2019-11-08', 'Content Writer', 'Content', 79000, 6),
-('Joseph Murphy', 'joseph.murphy@gmail.com', 'male', 'Denver', 31, '2020-03-27', 'Product Designer', 'Design', 93000, 9),
-('Christina Richardson', 'christina.richardson@example.com', 'female', 'New York', 36, '2017-08-14', 'Data Analyst', 'Data Science', 75000, 5),
-('Edward Turner', 'edward.turner@example.com', 'male', 'Denver', 27, '2021-09-09', 'Data Analyst', 'Data Science', 82000, 4),
-('Laura Morris', 'laura.morris@example.com', 'female', 'Chicago', 32, '2018-12-02', 'Product Designer', 'Design', 77000, 7),
-('Patrick Sanchez', 'patrick.sanchez@example.com', 'male', 'Chicago', 33, '2016-11-16', 'Content Writer', 'Content', 89000, 8),
-('Samantha Morgan', 'samantha.morgan@example.com', 'female', 'New York', 30, '2020-06-29', 'Data Analyst', 'Data Science', 80000, 6),
-('Justin Coleman', 'justin.coleman@gmail.com', 'male', 'Chicago', 35, '2019-01-22', 'Business Analyst', 'Business Development', 88000, 9),
-('Rachel Ward', 'rachel.ward@example.com', 'female', 'Los Angeles', 28, '2017-04-07', 'Marketing Director', 'Marketing', 76000, 4),
-('Brandon Bell', 'brandon.bell@example.com', 'male', 'Los Angeles', 36, '2018-07-03', 'Data Analyst', 'Data Science', 91000, 8),
-('Amy Cook', 'amy.cook@example.com', 'female', 'Chicago', 31, '2021-02-18', 'Product Designer', 'Design', 78000, 5),
-('Nicholas Stewart', 'nicholas.stewart@example.com', 'male', 'Chicago', 29, '2016-10-12', 'Business Analyst', 'Business Development', 93000, 9),
-('Cassandra Murphy', 'cassandra.murphy@gmail.com', 'female', 'San Diego', 34, '2019-05-06', 'Data Analyst', 'Data Science', 74000, 6),
-('Tyler Rivera', 'tyler.rivera@example.com', 'male', 'Los Angeles', 30, '2018-08-28', 'Software Engineer', 'Engineering', 90000, 7),
-('Heather Price', 'heather.price@example.com', 'female', 'Los Angeles', 27, '2020-11-15', 'Content Writer', 'Content', 79000, 4),
-('Ryan White', 'ryan.white@gmail.com', 'male', 'San Diego', 32, '2017-06-25', 'Data Analyst', 'Data Science', 92000, 8);
+INSERT INTO users (first_name, last_name, email, phone_number, address) VALUES
+('John', 'Doe', 'john@gmail.com', '123-456-7890', 'Main St, Cityville'),
+('Alice', 'Smith', 'alice02@gmail.com', '234-567-8901', '456 Elm St, Townsville'),
+('Bob', 'Johnson', 'bob@example.com', '345-678-9012', '789 Oak St, Villageton'),
+('Emily', 'Davis', 'emily@example.com', '456-789-01236', '321 Pine St, Hamletville'),
+('Michael', 'Brown', 'michael23@gmail.com', '567-890-12342', 'Maple St, Countryside'),
+('Sarah', 'Miller', 'sarah@gmail.com', '678-901-2345', 'Cedar St, Suburbia'),
+('David', 'Wilson', 'david@example.com', '789-012-34562', '210 Birch St, Riverside'),
+('Jennifer', 'Taylor', 'jennifer33@gmail.com', '890-123-4567', '753 Spruce St, Hillside'),
+('James', 'Anderson', 'james@example.com', '901-234-5678', '846 Walnut St, Mountainside'),
+('Jessica', 'Thomas', 'jessica@example.com', '012-345-67892', 'Cherry St, Seaside'),
+('Matthew', 'White', 'matthew@gmail.com', '987-654-3210', '357 Sycamore St, Lakeside'),
+('Luis', 'Martinez', 'luis@example.com', '876-543-2109', '852 Poplar St, Parkville'),
+('Daniel', 'Garcia', 'daniel@example.com', '765-432-1098', '741 Birch St, Hilltop'),
+('Ashley', 'Hernandez', 'ashley16@example.com', '654-321-0987', 'Cedar St, Valleyview'),
+('Christopher', 'Lopez', 'christopher@gmail.com', '543-210-9876', '159 Elm St, Lakeshore'),
+('Amanda', 'Gonzalez', 'amanda@example.com', '432-109-87653', 'Maple St, Lakeshore'),
+('Kevin', 'Perez', 'kevin15@gmail.com', '321-098-7654', '753 Oak St, Lakeside'),
+('Stephanie', 'Torres', 'stephanie@gmail.com', '210-987-6543', '951 Pine St, Hillview'),
+('Ryan', 'Flores', 'ryan@gmail.com', '109-876-5432', '852 Elm St, Hillcrest'),
+('Nicole', 'Ramirez', 'nicole00@example.com', '098-765-43215', 'Cedar St, Hilltop');
 
-# see all the record in a table
-SELECT * FROM employees;
+# Q. Find all the users whose first name contains 'le' by the use of Like
+SELECT * FROM users
+WHERE first_name LIKE '%le%';
 
-/* 
-	Distinct:
-		The SQL Distinct keyword is used in conjuction with SELECT statment to featch the unique records from the table.
-        Syntax: 
-			SELECT DISTINCT col_name, col2.....
-			FROM table_name;
-*/
-SELECT DISTINCT
-    (city) AS unique_city
-FROM
-    employees;
+# Q. Find all the users whose first name contains 'le' by the use of RegExp
+SELECT * FROM users
+WHERE first_name REGEXP 'le';
 
-# Q. Find the unique department and designation
-SELECT DISTINCT
-    department, designation
-FROM
-    employees;
-    
-# Q. It will find the uniqe records from the table
-SELECT 
-    COUNT(DISTINCT (city)) AS unique_value_count
-FROM
-    employees;
-    
-# Q. Find the average age,min age, max age in single query
-SELECT 
-    AVG(emp_age) AS avg_age,
-    MIN(emp_age) AS min_age,
-    MAX(emp_age) AS max_age
-FROM
-    employees;
+# Q. Find all the users whose first name contains 'a'
+SELECT * FROM users
+WHERE first_name REGEXP 'a';
+
+# Q. Find all the users whose first name starting with 'a'
+SELECT * FROM users
+WHERE first_name REGEXP '^am';
+
+# Q. Find the Frist name whose starts with 'J'
+SELECT * FROM users
+WHERE first_name REGEXP '^J';
+
+# Q. Find the Frist name whose end with 'a'
+SELECT * FROM users
+WHERE first_name REGEXP 'a$';
+
+# Q. Find the whose last name end with 'ez'
+SELECT * FROM users
+WHERE last_name REGEXP 'ez$';
+
+# Q. Find the whose first name starts with 'a' and last name end with 'ez'
+SELECT * FROM users
+WHERE first_name REGEXP '^A' AND last_name REGEXP 'ez$';
+
+# Q. Find all the users whose phone number contains '987' or '876' or '765'
+# By the use of or
+SELECT * FROM users
+WHERE phone_number REGEXP '987' or phone_number REGEXP '876' or phone_number REGEXP '765';
+
+SELECT * FROM users
+WHERE phone_number REGEXP '987|876|765';
+
+# Q. Find the users whose First name either 'a' or either 'r';
+SELECT * FROM users
+WHERE first_name REGEXP 'a|r';
+
+SELECT * FROM users
+WHERE first_name REGEXP '[ar]';
+
+# Q. Find all the users whose starts with 'a' or starts with 'r'
+SELECT * FROM users
+WHERE first_name REGEXP '^a|^r';
+SELECT * FROM users
+WHERE first_name REGEXP '^[ar]';
+
+# Q. Find all the users whose starts with 'j' or 'm';
+SELECT * FROM users
+WHERE first_name REGEXP '^[jm]';
+
+SELECT * FROM users
+WHERE first_name REGEXP '^j|^m';
+
+# Q. Find the all users whose first_name starts with vowel
+SELECT * FROM users
+WHERE first_name REGEXP '^[aeiou]';
+
+# Q. Find all the users whose address is starts with number
+SELECT * FROM users
+WHERE address REGEXP '^[0-9]';
+SELECT * FROM users
+WHERE address REGEXP '^[0123456789]';
+
+# Q. Find the records whose email contain number before '@'
+SELECT * FROM users
+WHERE email REGEXP '[0-9]@';
+
+# Q. Find the users whose first name contains only 5 characters
+SELECT * FROM users
+WHERE first_name REGEXP '^[a-z]{5}$';
+
+# Q. Find the user whose first name conatins 'nn'
+SELECT * FROM users
+WHERE first_name REGEXP 'nn';
+SELECT * FROM users
+WHERE first_name REGEXP '[n]{2}';
+
+# Q. Find the users whose phone number have format 'xxx-xxx-xxxx'
+SELECT * FROM users
+WHERE phone_number REGEXP '^[0-9]{3}-[0-9]{3}-[0-9]{4}$';
+
+# Q. Find the users Whose last_name contains two consecutive vowels
+SELECT * FROM users
+WHERE last_name REGEXP '[aeiou]{2}';
