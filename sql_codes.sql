@@ -1,161 +1,47 @@
-# Group by
+# Having Clause
 /*
-	GROUP By clause always use aggregation function
+	Jo ki Group By se filter hoke aaya hai data us ko filter krne ke liye Having Clause use hota hai
+    Without Group By Having Clause dose't use.
     
     SYNTAX
-			select col_name, aggregate function (col_name2)....
+			SELECT col_name, AGGREGATE(col_name)...
             FROM table_name
-            WHERE  [condition]
-            group by col_name
+            WHERE [condition]
+            GROUP BY col_name
+            HAVING [aggregate_col_name Condition]
+            
+            # [] it means or ('ho bhi skta hai nhi bhi.')
 */ 
 
 use db2;
 
-SELECT * FROM employees;
-
-SELECT gender, COUNT(employee_id) AS emp_count
-FROM employees
-GROUP BY gender;
-
-# find the count of gender from employees table
-SELECT gender, COUNT(employee_id) AS emp_count
-FROM employees
-GROUP BY gender;
-
-# find the count of employees in each city from employees table
-SELECT city, COUNT(employee_id) AS emp_count
-FROM employees
-GROUP BY city;
-
-# find the count of male employees in each city from employees table
-SELECT city, COUNT(employee_id) AS emp_count
-FROM employees
-WHERE gender = 'male'
-GROUP BY city;
-
-# find the count of male employees in each city from employees table
-SELECT city, COUNT(employee_id) AS emp_count
-FROM employees
-WHERE gender = 'male'
-GROUP BY city;
-
-
-/* find the count of female employees in each department
- from employees table
-*/
-SELECT department, COUNT(employee_id) AS emp_count
-FROM
-    employees
-WHERE
-    gender = 'female'
-GROUP BY department;
-
-# find the total salary of each department from employees 
-SELECT department, SUM(salary) AS total_sal
-FROM employees
-GROUP BY department;
-
-# find the total salary of each city from employees 
-SELECT city, SUM(salary) AS total_sal
-FROM employees
-GROUP BY city;
-
-
-# find the min salary of each department
-SELECT department, MIN(salary) AS min_salary
-FROM employees
-GROUP BY department;
-
-# find the max salary of each department 
-SELECT department, MAX(salary) AS max_salary
-FROM employees
-GROUP BY department;
-
-# find the average of each department 
-SELECT department, AVG(salary) AS avg_salary
-FROM employees
-GROUP BY department;
-
-# find the total,min,max,average salary of each department
-SELECT department,
-    SUM(salary) AS total_sal,
-    MIN(salary) AS min_sal,
-    MAX(salary) AS max_salary,
-    AVG(salary) AS avg_sal
-FROM employees
-GROUP BY department;
-
-/*find the average age,min age,max age of employees 
-from each city
-*/
-SELECT city,
-    AVG(emp_age) AS avg_age,
-    MIN(emp_age) AS min_age,
-    MAX(emp_age) AS max_age
-FROM employees
-GROUP BY city;
-
-select * from superstore;
-
-# find the total sales of each segment from superstore data
-SELECT segment, SUM(sales) AS total_sales
-FROM superstore
-GROUP BY segment;
-
-# find the avg profit of each segment in west region
-SELECT segment, AVG(profit) AS avg_profit
-FROM superstore
-WHERE region = 'west'
-GROUP BY segment;
-
-# find the total sales of each subcategory
+# Find the total sales of each sub-category having total sales more then 1 lakhs
 SELECT `sub-category`, SUM(sales) AS total_sales
 FROM superstore
-GROUP BY `sub-category`;
+GROUP BY `sub-category`
+HAVING total_sales > 100000;
 
-# find the total profit of each category and each region
-SELECT category, region, SUM(profit) AS total_profit
-FROM superstore
-GROUP BY category , region;
-
-# Find the avg_age salary of each department of the  employees whose age is more than 30 from the employees table
-SELECT department, AVG(salary) AS avg_sal
+# Find the avg age of employees from each department whose age is more then 30 and avg age is more then 34
+SELECT department, AVG(emp_age) AS avg_emp_age
 FROM employees
 WHERE emp_age > 30
-GROUP BY department;
+GROUP BY department
+HAVING avg_emp_age > 34;
 
-# Find the total sales of each category from the supertore where sales is between 50 - 2000
-SELECT category, SUM(sales) AS total_sales
-FROM superstore
-WHERE sales BETWEEN 50 AND 2000
-GROUP BY category;
+# Find the total salary of each department whose salary is between 70000 - 90000 and total salary is greater than 3 lakhs
+SELECT department, SUM(salary) AS total_salary
+FROM employees 
+WHERE salary BETWEEN 70000 AND 90000
+GROUP BY department
+HAVING total_salary > 300000;
 
-# Find the total sales, avg profit, count of quentity of each segment from the east and west region
-SELECT segment, SUM(sales) AS total_sales, AVG(profit) AS avg_profit, COUNT(quantity) AS cnt_qty
+# Find the avg profit and count of quantity of each segment from the east and west region having count of quantity greater than 1200
+SELECT segment,
+    AVG(profit) AS avg_profit,
+    COUNT(quantity) AS cnt_qty
 FROM superstore
-WHERE region IN ('east', 'west')
-GROUP BY segment;
-
-# Find the total profit of each sub-category whose city name starts with 'N' or 'C' (use regular expression)
-SELECT `sub-category`, SUM(profit) as total_profit
-FROM superstore
-WHERE city REGEXP '^[CN]'
-GROUP BY `sub-category`; 
-
-SELECT `sub-category`, SUM(profit) AS total_profit
-FROM superstore
-WHERE city LIKE 'C%' OR city LIKE 'N%'
-GROUP BY `sub-category`; 
-
-# Find the total profit of each sub-category whose city name have 7 char only (use regular expression, Like operatore)
-SELECT `sub-category`, SUM(profit) AS total_profit
-FROM superstore
-WHERE city REGEXP '^[A-Z]{7}$'
-GROUP BY `sub-category`;
-
-SELECT `sub-category`, SUM(profit) AS total_profit
-FROM superstore
-WHERE city LIKE '_______'
-GROUP BY `sub-category`;
+WHERE region IN ('east' , 'west')
+GROUP BY segment
+HAVING cnt_qty > 1200;
 
 
